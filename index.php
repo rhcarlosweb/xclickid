@@ -52,12 +52,15 @@
     <!-- Lenis Smooth Scroll -->
     <script src="https://unpkg.com/lenis@1.3.18/dist/lenis.min.js"></script>
 
-    <link rel="stylesheet" href="assets/css/main.css?v=1">
+    <!-- GSAP for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/main.css?v=2">
 </head>
 <body class="relative min-h-screen selection:bg-blue-500/30 selection:text-blue-200">
 
     <!-- Brilho Ambiente Dinâmico acompanhando o mouse -->
-    <div id="ambient-glow" class="pointer-events-none fixed inset-0 z-0 transition-opacity duration-300" style="background: radial-gradient(600px circle at 0px 0px, rgba(59, 130, 246, 0.06), transparent 40%);"></div>
+    <div id="ambient-glow" class="pointer-events-none fixed inset-0 z-0 transition-opacity duration-300" style="background: radial-gradient(600px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(59, 130, 246, 0.06), transparent 40%);"></div>
 
     <!-- Navbar -->
     <nav id="navbar" class="fixed border border-transparent top-0 w-full z-50 transition-all duration-300 bg-transparent">
@@ -313,7 +316,7 @@
                 </div>
                 <div class="relative flex justify-center h-[350px] md:h-[500px]" style="perspective: 1000px;">
                     <!-- Refined Visual representation -->
-                    <div class="network-container w-full max-w-sm md:max-w-lg transition-transform duration-200 ease-out">
+                    <div class="network-container w-full max-w-sm md:max-w-lg">
                         <!-- Background Glows -->
                         <div class="absolute inset-0 bg-blue-600/5 rounded-full blur-[100px] animate-pulse"></div>
                         
@@ -748,6 +751,6 @@
     </div>
 
     <script src="assets/js/lenis-setup.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js?v=3"></script>
 </body>
 </html>

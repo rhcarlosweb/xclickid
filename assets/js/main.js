@@ -3,13 +3,6 @@
         lucide.createIcons();
     }
 
-    const glow = document.getElementById('ambient-glow');
-    if (glow) {
-        window.addEventListener('mousemove', (e) => {
-            glow.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(59, 130, 246, 0.06), transparent 40%)`;
-        });
-    }
-
     const navbar = document.getElementById('navbar');
     const navContainer = navbar ? navbar.querySelector('.max-w-7xl') : null;
     if (navbar && navContainer) {
@@ -25,7 +18,93 @@
                 navContainer.classList.add('py-4', 'md:py-6');
                 navContainer.classList.remove('py-3');
             }
-        });
+        }, { passive: true });
+    }
+
+    // Interactive Elements
+    const glow = document.getElementById('ambient-glow');
+    const heroCard = document.getElementById('heroCard');
+    const networkContainer = document.querySelector('.network-container');
+
+    if (typeof gsap !== 'undefined') {
+        // Optimized Setters
+        const setHeroX = heroCard ? gsap.quickSetter(heroCard, "rotateX", "deg") : null;
+        const setHeroY = heroCard ? gsap.quickSetter(heroCard, "rotateY", "deg") : null;
+        const setNetX = networkContainer ? gsap.quickSetter(networkContainer, "rotateY", "deg") : null;
+        const setNetY = networkContainer ? gsap.quickSetter(networkContainer, "rotateX", "deg") : null;
+
+        let lastX = window.innerWidth / 2;
+        let lastY = window.innerHeight / 2;
+        let ticking = false;
+
+        const updateVisuals = () => {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            // 1. Ambient Glow (Highest performance cost if directly on style)
+            if (glow) {
+                glow.style.setProperty('--mouse-x', `${lastX}px`);
+                glow.style.setProperty('--mouse-y', `${lastY}px`);
+            }
+
+            // 2. Hero Card Tilt
+            if (setHeroX && setHeroY) {
+                // Larger division = subtler, more "weighty" feel
+                const hRotateX = (lastY - centerY) / 60; 
+                const hRotateY = (centerX - lastX) / 60;
+                setHeroX(hRotateX);
+                setHeroY(hRotateY);
+            }
+
+            // 3. Network Parallax
+            if (setNetX && setNetY) {
+                const nRotateX = (centerX - lastX) / 50;
+                const nRotateY = (centerY - lastY) / 50;
+                setNetX(nRotateX);
+                setNetY(nRotateY);
+            }
+
+            ticking = false;
+        };
+
+        window.addEventListener('mousemove', (e) => {
+            lastX = e.clientX;
+            lastY = e.clientY;
+
+            if (!ticking) {
+                requestAnimationFrame(updateVisuals);
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // Hero Card Glow logic (internal to card)
+        if (heroCard) {
+            heroCard.addEventListener('mousemove', (e) => {
+                const rect = heroCard.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                heroCard.style.setProperty('--mouse-x', `${x}%`);
+                heroCard.style.setProperty('--mouse-y', `${y}%`);
+            }, { passive: true });
+
+            heroCard.addEventListener('mouseenter', () => {
+                gsap.to(heroCard, {
+                    scale: 1.02,
+                    duration: 0.4,
+                    ease: "power2.out",
+                    overwrite: true
+                });
+            });
+
+            heroCard.addEventListener('mouseleave', () => {
+                gsap.to(heroCard, {
+                    scale: 1,
+                    duration: 0.6,
+                    ease: "power2.inOut",
+                    overwrite: true
+                });
+            });
+        }
     }
 
     // Mobile Menu Logic
@@ -60,6 +139,7 @@
         link.addEventListener('click', closeMobileMenu);
     });
 
+    // Fade In Observer
     const observerOptions = {
         root: null,
         threshold: 0.1,
@@ -79,44 +159,10 @@
         observer.observe(el);
     });
 
-    // XClickID Widget Logic
+    // XClickID Widget Simulation
     const xcHash = document.getElementById('xc-hash');
     const xcIp = document.getElementById('xc-ip');
     const xcCountry = document.getElementById('xc-country');
-
-    // Network Visual Parallax
-    const networkContainer = document.querySelector('.network-container');
-    if (networkContainer) {
-        window.addEventListener('mousemove', (e) => {
-            const x = (window.innerWidth / 2 - e.clientX) / 50;
-            const y = (window.innerHeight / 2 - e.clientY) / 50;
-            networkContainer.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-        });
-    }
-
-    // Hero Card 3D Tilt Effect
-    const heroCard = document.getElementById('heroCard');
-    if (heroCard) {
-        heroCard.addEventListener('mousemove', (e) => {
-            const rect = heroCard.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-            
-            heroCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            heroCard.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
-            heroCard.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
-        });
-        
-        heroCard.addEventListener('mouseleave', () => {
-            heroCard.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-        });
-    }
 
     if (xcHash) {
         const randomHash = Math.random().toString(16).substring(2, 6) + '...' + Math.random().toString(16).substring(2, 6);
@@ -124,7 +170,6 @@
     }
 
     if (xcIp || xcCountry) {
-        // Simulating data loading
         setTimeout(() => {
             fetch('https://ipapi.co/json/')
                 .then(res => res.json())
