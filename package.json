@@ -1,0 +1,14 @@
+{
+  "name": "xclickid",
+  "private": true,
+  "scripts": {
+    "build:css": "sass assets/scss/main.scss assets/css/main.css",
+    "watch:css": "sass --watch assets/scss/main.scss:assets/css/main.css",
+    "dev": "pnpm run build:css && concurrently \"pnpm run watch:css\" \"browser-sync start --config bs-config.cjs\""
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.3",
+    "concurrently": "^9.1.0",
+    "sass": "^1.81.0"
+  }
+}

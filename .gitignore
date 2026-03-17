@@ -1,0 +1,17 @@
+node_modules/
+.pnpm-store/
+pnpm-debug.log
+
+.env
+.env.local
+.env.*.local
+
+*.log
+.DS_Store
+Thumbs.db
+
+assets/css/main.css.map
+.idea/
+*.swp
+*.swo
+*~
