@@ -3,7 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XClickID - Verificação Invisível</title>
+    <title>XClickID - Valide seus usuários em segundos!</title>
+    
+    <!-- Metatags para SEO e Compartilhamento -->
+    <meta name="title" content="XClickID | Valide seus usuários em segundos!">
+    <meta name="description" content="A infraestrutura de identidade que valida seus usuários antes mesmo deles chegarem. Aumente sua conversão e reduza fricção agora!">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xclickid.com/">
+    <meta property="og:title" content="XClickID | Valide seus usuários em segundos!">
+    <meta property="og:description" content="Reduza o abandono e aumente a conversão com a verificação invisível. Seus usuários já estão prontos para converter. Saiba mais!">
+    <meta property="og:image" content="https://xclickid.com/assets/img/og-image.jpg"> <!-- Recomenda-se uma imagem de 1200x630px -->
+    <meta property="og:site_name" content="XClickID">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://xclickid.com/">
+    <meta property="twitter:title" content="XClickID | Valide seus usuários em segundos!">
+    <meta property="twitter:description" content="Reduza o abandono e aumente a conversão com a verificação invisível. Seus usuários já estão prontos para converter. Saiba mais!">
+    <meta property="twitter:image" content="https://xclickid.com/assets/img/og-image.jpg">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -13,6 +32,9 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/lenis@1.3.18/dist/lenis.min.js"></script>
 
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -51,7 +73,7 @@
 
             <div class="flex items-center gap-4">
                 <button class="bg-white text-black px-5 py-2.5 rounded-full text-sm font-bold hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center gap-2 group">
-                    Falar com especialistas
+                    Falar com nossos especialistas
                     <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:rotate-45 transition-transform"></i>
                 </button>
             </div>
@@ -93,52 +115,89 @@
                 </div>
             </div>
 
-            <!-- Hero Visual - Identidade Simulada -->
-            <div class="lg:col-span-5 relative hidden lg:block pl-10">
-                <div class="fade-in left delay-500 relative w-full aspect-[4/5] rounded-3xl glass-panel p-6 border border-white/10 overflow-hidden group">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-blue-400"></div>
+            <!-- Hero Visual - Advanced 3D Identity Vault -->
+            <div class="lg:col-span-5 relative hidden lg:block pl-10 hero-visual-container">
+                <!-- Decorative Elements -->
+                <div class="absolute -top-12 -right-12 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute -bottom-12 -left-12 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: -2s;"></div>
+
+                <!-- Main Card -->
+                <div id="heroCard" class="fade-in left delay-500 relative w-full aspect-[4/5] rounded-3xl glass-panel p-8 border border-white/10 overflow-hidden group hero-card-3d shadow-[0_30px_100px_rgba(0,0,0,0.5)]">
+                    <!-- Internal Light Streak -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-blue-500/5 to-transparent pointer-events-none"></div>
                     
-                    <div class="flex items-center justify-between mb-8">
-                        <i data-lucide="fingerprint" class="w-8 h-8 text-blue-500"></i>
-                        <div class="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs font-medium flex items-center gap-1.5 border border-green-500/20">
-                            <i data-lucide="check-circle-2" class="w-3 h-3"></i> Status: Verificado
+                    <div class="flex items-center justify-between mb-10 relative z-10">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center border border-blue-500/30">
+                                <i data-lucide="fingerprint" class="w-6 h-6 text-blue-400"></i>
+                            </div>
+                            <span class="text-white font-bold text-lg tracking-tight">XClick<span class="text-blue-500">ID</span></span>
+                        </div>
+                        <div class="px-3 py-1.5 rounded-full bg-green-500/10 text-green-400 text-[10px] font-black uppercase tracking-widest flex items-center gap-2 border border-green-500/20">
+                            <div class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_#22c55e]"></div>
+                            Verificado
                         </div>
                     </div>
                     
-                    <div class="space-y-6 relative z-10">
-                        <div class="flex justify-center mb-8">
-                            <div class="relative">
-                                <div class="w-32 h-32 rounded-full border-2 border-dashed border-blue-500/50 flex items-center justify-center p-2">
-                                    <div class="w-full h-full rounded-full bg-zinc-800 overflow-hidden flex items-center justify-center relative">
-                                        <i data-lucide="user-check" class="w-12 h-12 text-zinc-500"></i>
-                                        <!-- Animação da linha do scanner -->
-                                        <div class="absolute top-0 left-0 w-full h-1 bg-blue-500 shadow-[0_0_10px_#3b82f6] animate-scanner"></div>
+                    <div class="space-y-10 relative z-10">
+                        <div class="flex justify-center">
+                            <div class="relative group/user">
+                                <div class="w-40 h-40 rounded-full border border-white/10 flex items-center justify-center p-3 relative">
+                                    <!-- Rotating outer rings -->
+                                    <div class="absolute inset-0 border-2 border-dashed border-blue-500/20 rounded-full animate-[spin_10s_linear_infinite]"></div>
+                                    <div class="absolute inset-2 border border-blue-400/10 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+                                    
+                                    <div class="w-full h-full rounded-full bg-zinc-900 overflow-hidden flex items-center justify-center relative shadow-inner">
+                                        <i data-lucide="user" class="w-16 h-16 text-zinc-700 group-hover/user:text-blue-500/50 transition-colors duration-500"></i>
+                                        
+                                        <!-- Interactive Scanning Line -->
+                                        <div class="scan-beam"></div>
+                                        
+                                        <!-- Simulated Point Cloud Overlay (SVG) -->
+                                        <svg class="absolute inset-0 w-full h-full opacity-20 pointer-events-none" viewBox="0 0 100 100">
+                                            <circle cx="50" cy="30" r="1" fill="white" />
+                                            <circle cx="40" cy="45" r="1" fill="white" />
+                                            <circle cx="60" cy="45" r="1" fill="white" />
+                                            <circle cx="50" cy="60" r="1" fill="white" />
+                                            <path d="M40,45 Q50,40 60,45" stroke="white" fill="none" stroke-width="0.5" />
+                                        </svg>
                                     </div>
                                 </div>
-                                <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center border-4 border-[#050505]">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-black"></i>
+                                
+                                <!-- Status Badge -->
+                                <div class="absolute -bottom-2 -right-2 w-10 h-10 bg-blue-500 rounded-2xl flex items-center justify-center border-4 border-[#050505] shadow-lg group-hover/user:scale-110 transition-transform">
+                                    <i data-lucide="shield-check" class="w-5 h-5 text-white"></i>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="space-y-3">
-                            <div class="flex justify-between items-center p-3 rounded-lg bg-white/5 border border-white/5">
-                                <span class="text-zinc-400 text-sm">Idade Estimada</span>
-                                <span class="text-white font-medium text-sm">Acima de 18 (Confiança 99%)</span>
+                        <div class="grid grid-cols-1 gap-3">
+                            <div class="group/item flex justify-between items-center p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/10 transition-all cursor-default">
+                                <div class="flex items-center gap-3">
+                                    <i data-lucide="user-check" class="w-4 h-4 text-yellow-500"></i>
+                                    <span class="text-zinc-400 text-xs font-medium tracking-wide">Idade Estimada</span>
+                                </div>
+                                <span class="text-white font-bold text-sm">Acima de 18 (99%)</span>
                             </div>
-                            <div class="flex justify-between items-center p-3 rounded-lg bg-white/5 border border-white/5">
-                                <span class="text-zinc-400 text-sm">Liveness Check</span>
-                                <span class="text-green-400 font-medium text-sm">Aprovado</span>
+                            <div class="group/item flex justify-between items-center p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/10 transition-all cursor-default">
+                                <div class="flex items-center gap-3">
+                                    <i data-lucide="scan-face" class="w-4 h-4 text-green-500"></i>
+                                    <span class="text-zinc-400 text-xs font-medium tracking-wide">Liveness Check</span>
+                                </div>
+                                <span class="text-green-400 font-bold text-sm uppercase tracking-tighter">Aprovado</span>
                             </div>
-                            <div class="flex justify-between items-center p-3 rounded-lg bg-white/5 border border-white/5">
-                                <span class="text-zinc-400 text-sm">Privacidade</span>
-                                <span class="text-blue-400 font-medium text-sm">Dados Encriptados</span>
+                            <div class="group/item flex justify-between items-center p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/10 transition-all cursor-default">
+                                <div class="flex items-center gap-3">
+                                    <i data-lucide="lock" class="w-4 h-4 text-blue-500"></i>
+                                    <span class="text-zinc-400 text-xs font-medium tracking-wide">Privacidade</span>
+                                </div>
+                                <span class="text-blue-400 font-bold text-sm uppercase tracking-tighter">Dados Encriptados</span>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Glow effect on hover -->
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500/20 rounded-full blur-[80px] -z-10 group-hover:bg-blue-500/30 transition-colors duration-500"></div>
+                    <!-- Dynamic Background Glow -->
+                    <div class="absolute -bottom-20 -right-20 w-80 h-80 bg-blue-600/20 rounded-full blur-[100px] -z-10 group-hover:bg-blue-600/30 transition-colors duration-700"></div>
                 </div>
             </div>
         </div>
@@ -465,7 +524,7 @@
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <button class="bg-white text-black px-10 py-4 rounded-full font-bold hover:bg-blue-500 hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(59,130,246,0.4)]">
-                        Falar com especialistas
+                        Falar com nossos especialistas
                     </button>
                     <button class="glass-panel text-white px-10 py-4 rounded-full font-bold hover:bg-white/5 transition-all duration-300">
                         Ler Política de Segurança
@@ -522,7 +581,7 @@
                 <div>
                     <h4 class="font-bold text-white mb-6 uppercase text-sm tracking-wider">Suporte</h4>
                     <ul class="space-y-4 text-zinc-500 text-sm">
-                        <li><a href="#" class="hover:text-blue-500 transition-colors">Falar com especialistas</a></li>
+                        <li><a href="#" class="hover:text-blue-500 transition-colors">Falar com nossos especialistas</a></li>
                         <li><a href="#" class="hover:text-blue-500 transition-colors">Ajuda / FAQ</a></li>
                         <li><a href="#methods" class="hover:text-blue-500 transition-colors">Métodos de Verificação</a></li>
                     </ul>
@@ -630,6 +689,7 @@
         </div>
     </div>
 
+    <script src="assets/js/lenis-setup.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>

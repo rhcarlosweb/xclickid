@@ -62,6 +62,30 @@
         });
     }
 
+    // Hero Card 3D Tilt Effect
+    const heroCard = document.getElementById('heroCard');
+    if (heroCard) {
+        heroCard.addEventListener('mousemove', (e) => {
+            const rect = heroCard.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            heroCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            heroCard.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+            heroCard.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+        });
+        
+        heroCard.addEventListener('mouseleave', () => {
+            heroCard.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        });
+    }
+
     if (xcHash) {
         const randomHash = Math.random().toString(16).substring(2, 6) + '...' + Math.random().toString(16).substring(2, 6);
         xcHash.textContent = randomHash.toUpperCase();

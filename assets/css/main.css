@@ -3,7 +3,27 @@ body {
   background-color: #050505;
   color: #ffffff;
   overflow-x: hidden;
-  scroll-behavior: smooth;
+}
+
+/* Lenis Smooth Scroll Styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 ::selection {
@@ -156,7 +176,6 @@ body {
   width: 75%;
   height: 75%;
   animation-duration: 30s;
-  reverse: true;
   animation-direction: reverse;
 }
 .network-container .network-orbit.orbit-3 {
@@ -254,6 +273,49 @@ body {
 @keyframes dash {
   to {
     stroke-dashoffset: -100;
+  }
+}
+/* Hero Visual Refinement */
+.hero-visual-container {
+  perspective: 2000px;
+}
+
+.hero-card-3d {
+  transition: transform 0.1s ease-out;
+  transform-style: preserve-3d;
+}
+.hero-card-3d::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.15), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 5;
+}
+.hero-card-3d:hover::before {
+  opacity: 1;
+}
+
+.scan-beam {
+  background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.5), transparent);
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  animation: scan-move 4s linear infinite;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+@keyframes scan-move {
+  0% {
+    top: -100px;
+  }
+  100% {
+    top: 100%;
   }
 }
 
