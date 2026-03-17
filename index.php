@@ -7,13 +7,13 @@
     
     <!-- Metatags para SEO e Compartilhamento -->
     <meta name="title" content="XClickID | Valide seus usuários em segundos!">
-    <meta name="description" content="A infraestrutura de identidade que valida seus usuários antes mesmo deles chegarem. Aumente sua conversão e reduza fricção agora!">
+    <meta name="description" content="A infraestrutura de identidade definitiva para conformidade legal. Valide usuários de sites +18 com biometria facial e IA, garantindo segurança jurídica sem fricção.">
 
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://xclickid.com/">
     <meta property="og:title" content="XClickID | Valide seus usuários em segundos!">
-    <meta property="og:description" content="Reduza o abandono e aumente a conversão com a verificação invisível. Seus usuários já estão prontos para converter. Saiba mais!">
+    <meta property="og:description" content="Adequação total às normas para sites +18. Validação invisível com biometria facial e base de usuários já verificada. Saiba mais!">
     <meta property="og:image" content="https://xclickid.com/assets/img/og-image.jpg"> <!-- Recomenda-se uma imagem de 1200x630px -->
     <meta property="og:site_name" content="XClickID">
 
@@ -21,7 +21,7 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://xclickid.com/">
     <meta property="twitter:title" content="XClickID | Valide seus usuários em segundos!">
-    <meta property="twitter:description" content="Reduza o abandono e aumente a conversão com a verificação invisível. Seus usuários já estão prontos para converter. Saiba mais!">
+    <meta property="twitter:description" content="Adequação total às normas para sites +18. Validação invisível com biometria facial e base de usuários já verificada. Saiba mais!">
     <meta property="twitter:image" content="https://xclickid.com/assets/img/og-image.jpg">
     
     <!-- Tailwind CSS CDN -->
@@ -442,15 +442,15 @@
                         <i data-lucide="trending-up" class="w-6 h-6"></i>
                     </div>
                     <h4 class="text-lg font-bold text-white mb-2">Aumento de Conversão</h4>
-                    <p class="text-sm text-zinc-400 leading-relaxed">Impacto direto no funil de vendas através da redução drástica de fricção no checkout.</p>
+                    <p class="text-sm text-zinc-400 leading-relaxed">Impacto direto no funil de acesso através da redução drástica de fricção na entrada do usuário.</p>
                 </div>
                 
                 <div class="fade-in up delay-100 text-center">
                     <div class="w-14 h-14 mx-auto rounded-full bg-blue-500/10 text-blue-500 flex items-center justify-center mb-4 border border-blue-500/20">
-                        <i data-lucide="user-minus" class="w-6 h-6"></i>
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
                     </div>
-                    <h4 class="text-lg font-bold text-white mb-2">Redução de Abandono</h4>
-                    <p class="text-sm text-zinc-400 leading-relaxed">Elimine as barreiras que fazem o usuário desistir da compra no momento da validação.</p>
+                    <h4 class="text-lg font-bold text-white mb-2">Conformidade Legal</h4>
+                    <p class="text-sm text-zinc-400 leading-relaxed">A solução definitiva para adequar seu site +18 às exigências legais de verificação de idade.</p>
                 </div>
 
                 <div class="fade-in up delay-200 text-center">
@@ -559,14 +559,6 @@
                     <p class="text-zinc-500 max-w-sm mb-8">
                         Infraestrutura de verificação inteligente para operações digitais de alta escala. Tecnologia 100% proprietária focada em performance e conformidade.
                     </p>
-                    <div class="flex gap-4">
-                        <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/></svg>
-                        </a>
-                        <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
-                        </a>
-                    </div>
                 </div>
                 
                 <div>
