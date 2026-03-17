@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XClickID - Valide seus usuários em segundos!</title>
     
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon.png">
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+    
     <!-- Metatags para SEO e Compartilhamento -->
     <meta name="title" content="XClickID | Valide seus usuários em segundos!">
     <meta name="description" content="A infraestrutura de identidade definitiva para conformidade legal. Valide usuários de sites +18 com biometria facial e IA, garantindo segurança jurídica sem fricção.">
@@ -47,7 +52,7 @@
     <!-- Lenis Smooth Scroll -->
     <script src="https://unpkg.com/lenis@1.3.18/dist/lenis.min.js"></script>
 
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/main.css?v=1">
 </head>
 <body class="relative min-h-screen selection:bg-blue-500/30 selection:text-blue-200">
 

@@ -299,15 +299,25 @@ html.lenis, html.lenis body {
 }
 
 .scan-beam {
-  background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.5), transparent);
   height: 100px;
   width: 100%;
   position: absolute;
   top: -100px;
   left: 0;
-  animation: scan-move 4s linear infinite;
+  background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.3));
   pointer-events: none;
-  opacity: 0.5;
+  z-index: 20;
+  animation: scan-move 3s linear infinite;
+}
+.scan-beam::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #3b82f6;
+  box-shadow: 0 0 15px #3b82f6, 0 0 5px #3b82f6;
 }
 
 @keyframes scan-move {
