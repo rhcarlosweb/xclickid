@@ -669,7 +669,7 @@
     </footer>
 
     <!-- XClickID Verification Seal Example -->
-    <div class="xclick-wrapper fixed bottom-8 right-8 z-[100] group" id="xclickWidget">
+    <div class="xclick-wrapper fixed bottom-8 right-8 z-[1000] group" id="xclickWidget">
         <!-- Tooltip Card -->
         <div class="xclick-card absolute bottom-full right-0 mb-4 w-64 glass-panel p-5 rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 shadow-2xl">
             <div class="flex items-center justify-between mb-4">
