@@ -52,6 +52,16 @@
     const xcIp = document.getElementById('xc-ip');
     const xcCountry = document.getElementById('xc-country');
 
+    // Network Visual Parallax
+    const networkContainer = document.querySelector('.network-container');
+    if (networkContainer) {
+        window.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.clientX) / 50;
+            const y = (window.innerHeight / 2 - e.clientY) / 50;
+            networkContainer.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+        });
+    }
+
     if (xcHash) {
         const randomHash = Math.random().toString(16).substring(2, 6) + '...' + Math.random().toString(16).substring(2, 6);
         xcHash.textContent = randomHash.toUpperCase();

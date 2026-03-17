@@ -183,23 +183,64 @@
                         Vantagem Competitiva Real
                     </div>
                 </div>
-                <div class="relative flex justify-center">
-                    <!-- Visual representation of the network -->
-                    <div class="w-full max-w-md aspect-square relative flex items-center justify-center">
-                        <div class="absolute inset-0 bg-blue-600/10 rounded-full blur-[100px] animate-pulse"></div>
-                        <div class="relative w-full h-full border border-white/5 rounded-full flex items-center justify-center">
-                             <div class="w-3/4 h-3/4 border border-blue-500/20 rounded-full flex items-center justify-center animate-[spin_20s_linear_infinite]">
-                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_15px_#3b82f6]"></div>
-                                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-zinc-700 rounded-full"></div>
-                                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-zinc-700 rounded-full"></div>
-                                <div class="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-zinc-700 rounded-full"></div>
-                             </div>
-                             <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="w-24 h-24 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                                    <i data-lucide="shield-check" class="w-12 h-12 text-white"></i>
-                                </div>
-                             </div>
+                <div class="relative flex justify-center h-[350px] md:h-[500px]" style="perspective: 1000px;">
+                    <!-- Refined Visual representation -->
+                    <div class="network-container w-full max-w-sm md:max-w-lg transition-transform duration-200 ease-out">
+                        <!-- Background Glows -->
+                        <div class="absolute inset-0 bg-blue-600/5 rounded-full blur-[100px] animate-pulse"></div>
+                        
+                        <!-- Orbits with Nodes (Borders are hidden via CSS) -->
+                        <div class="network-orbit orbit-1">
+                            <div class="network-node" style="top: 0; left: 50%; transform: translateX(-50%);"></div>
                         </div>
+                        <div class="network-orbit orbit-2">
+                            <div class="network-node" style="top: 50%; left: 0%; transform: translateY(-50%);"></div>
+                        </div>
+                        <div class="network-orbit orbit-3">
+                            <div class="network-node" style="top: 20%; left: 20%;"></div>
+                        </div>
+                        <div class="network-orbit orbit-1" style="animation-delay: -10s; animation-direction: reverse;">
+                            <div class="network-node" style="bottom: 0; left: 50%; transform: translateX(-50%); background: #60a5fa;"></div>
+                        </div>
+
+                        <div class="network-orbit orbit-2" style="animation-delay: -5s;">
+                            <div class="network-node" style="top: 50%; left: 100%; transform: translateY(-50%); background: #60a5fa;"></div>
+                        </div>
+                        <div class="network-orbit orbit-3" style="animation-delay: -15s; animation-direction: reverse;">
+                            <div class="network-node" style="top: 80%; left: 80%;"></div>
+                        </div>
+
+                        <!-- Central Core -->
+                        <div class="central-core">
+                        <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.277158 2.65761C1.09488 1.72631 1.93532 0.84044 2.84391 0C3.91149 0.636009 4.88822 1.45374 5.86495 2.20332C7.52311 3.47534 9.18128 4.72464 10.8395 5.97394C11.112 6.2238 11.4982 6.33737 11.8162 6.08751C14.5646 4.13406 17.1768 1.95346 19.9253 0C20.9474 0.795011 21.7652 1.81718 22.651 2.74848C22.969 3.04377 22.5602 3.40719 22.4012 3.67977C18.9258 8.29083 15.3824 12.8792 11.907 17.4902C11.7253 17.8083 11.1802 17.8537 10.953 17.5811C7.45497 12.97 3.97964 8.35898 0.458873 3.77063C0.231726 3.45263 -0.0635607 2.99833 0.277158 2.65761Z" fill="#F2F2F2"/>
+                        <path d="M4.95649 13.2881C5.18364 13.0155 5.36536 12.6975 5.66065 12.493C6.09222 12.5158 6.25123 12.9701 6.50109 13.2653C7.56868 14.7872 8.81798 16.1728 9.81742 17.7628C7.95483 19.2393 6.00136 20.5794 4.16148 22.0786C3.79805 22.3512 3.45733 22.6692 3.04847 22.8509C2.73046 22.8736 2.54875 22.5556 2.3216 22.3966C1.57202 21.6016 0.686149 20.9656 0.00471095 20.1252C-0.0407183 19.8299 0.254573 19.6027 0.368146 19.3756C1.89002 17.3313 3.45733 15.3324 4.95649 13.2881Z" fill="#F2F2F2"/>
+                        <path d="M16.4953 13.1063C16.6998 12.9019 16.9269 12.4249 17.2903 12.6293C17.8128 13.1518 18.1989 13.765 18.6532 14.3329C20.0161 16.2182 21.5153 17.99 22.8327 19.9207C22.015 20.8747 21.1972 21.806 20.2887 22.6692C20.0388 22.9872 19.6072 22.8055 19.3574 22.5783C17.6311 21.2382 15.882 19.9207 14.1557 18.6033C13.7696 18.308 13.4289 17.9672 13.0881 17.5811C14.2239 16.1047 15.3823 14.6055 16.4953 13.1063Z" fill="#F2F2F2"/>
+                        </svg>
+                            <!-- Constant Pulse Ring -->
+                            <div class="absolute inset-[-10px] md:inset-[-15px] border border-blue-500/40 rounded-[20px] md:rounded-[30px] animate-[ping_3s_linear_infinite]"></div>
+                        </div>
+
+                        <!-- Connection Lines SVG (Background) -->
+                        <svg class="network-lines" viewBox="0 0 500 500">
+                            <path d="M250,250 L50,250" />
+                            <path d="M250,250 L450,250" />
+                            <path d="M250,250 L250,50" />
+                            <path d="M250,250 L250,450" />
+                            <path d="M250,250 L100,100" />
+                            <path d="M250,250 L400,400" />
+                            
+                            <!-- Animated Pulse Dots on Lines -->
+                            <circle r="2" class="pulse">
+                                <animateMotion dur="3s" repeatCount="indefinite" path="M250,250 L50,250" />
+                            </circle>
+                            <circle r="2" class="pulse">
+                                <animateMotion dur="5s" repeatCount="indefinite" path="M250,250 L450,250" />
+                            </circle>
+                            <circle r="2" class="pulse">
+                                <animateMotion dur="4s" repeatCount="indefinite" path="M250,250 L250,50" />
+                            </circle>
+                        </svg>
                     </div>
                 </div>
             </div>
