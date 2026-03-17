@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,14 +18,14 @@
 </head>
 <body class="relative min-h-screen selection:bg-blue-500/30 selection:text-blue-200">
 
-    <!-- Brilho Ambiente Dinâmico acompanhando o rato -->
+    <!-- Brilho Ambiente Dinâmico acompanhando o mouse -->
     <div id="ambient-glow" class="pointer-events-none fixed inset-0 z-0 transition-opacity duration-300" style="background: radial-gradient(600px circle at 0px 0px, rgba(59, 130, 246, 0.06), transparent 40%);"></div>
 
     <!-- Navbar -->
-    <nav id="navbar" class="fixed border border-transparent top-0 w-full z-50 transition-all duration-300 bg-transparent py-6">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+    <nav id="navbar" class="fixed border border-transparent top-0 w-full z-50 transition-all duration-300 bg-transparent">
+            <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center py-4 md:py-6">
             <div class="flex items-center gap-2 cursor-pointer group">
-            <svg width="179" height="42" viewBox="0 0 179 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 179 42" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-auto h-8 md:h-10">
             <path d="M84.3428 10.178C85.7057 9.51927 87.5002 10.7913 87.2503 12.3132C87.4093 14.2666 84.4564 15.0844 83.457 13.4716C82.5257 12.3813 83.1162 10.7231 84.3428 10.178Z" fill="white"/>
             <path d="M72.7121 7.01124C73.8251 6.98853 74.9381 6.9431 76.0511 7.05667C76.0511 18.1414 76.0739 29.2261 76.0284 40.3108C74.9381 40.3108 73.8478 40.3109 72.7575 40.3336C72.7121 39.6748 72.6667 38.9934 72.6894 38.3347C72.7121 27.886 72.6667 17.46 72.7121 7.01124Z" fill="white"/>
             <path d="M117.823 7.0113C118.936 6.98858 120.027 6.98858 121.14 7.0113C121.253 18.1187 121.185 29.2262 121.162 40.3336C120.027 40.3563 118.914 40.3563 117.778 40.3336C117.778 29.2262 117.733 18.1187 117.823 7.0113Z" fill="white"/>
@@ -50,11 +50,8 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <button class="hidden md:block text-sm font-medium hover:text-white transition-colors">
-                    Falar com especialistas
-                </button>
                 <button class="bg-white text-black px-5 py-2.5 rounded-full text-sm font-bold hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center gap-2 group">
-                    Comece Agora
+                    Falar com especialistas
                     <i data-lucide="arrow-up-right" class="w-4 h-4 group-hover:rotate-45 transition-transform"></i>
                 </button>
             </div>
@@ -224,10 +221,10 @@
                 <!-- Step 1 -->
                 <div class="fade-in up glass-panel p-10 rounded-2xl border border-white/5 hover:border-blue-500/40 transition-all duration-300 flex flex-col items-center text-center group bg-black/40">
                     <div class="w-20 h-20 rounded-full bg-[#050505] border border-white/10 flex items-center justify-center text-blue-500 mb-6 group-hover:scale-110 group-hover:bg-blue-500/10 transition-all duration-500 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-                        <i data-lucide="code-2" class="w-8 h-8"></i>
+                        <i data-lucide="message-square" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">1. Registe-se</h3>
-                    <p class="text-zinc-400 text-sm leading-relaxed">Crie a sua conta corporativa em segundos e aceda ao painel de controlo.</p>
+                    <h3 class="text-xl font-bold text-white mb-3">1. Fale com um Especialista</h3>
+                    <p class="text-zinc-400 text-sm leading-relaxed">Entre em contato com nosso time para alinhar a melhor estratégia de integração para sua operação.</p>
                 </div>
 
                 <!-- Step 2 -->
@@ -235,7 +232,7 @@
                     <div class="w-20 h-20 rounded-full bg-[#050505] border border-white/10 flex items-center justify-center text-blue-500 mb-6 group-hover:scale-110 group-hover:bg-blue-500/10 transition-all duration-500 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
                         <i data-lucide="settings" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">2. Configure o seu Site</h3>
+                    <h3 class="text-xl font-bold text-white mb-3">2. Configure seu Site</h3>
                     <p class="text-zinc-400 text-sm leading-relaxed">Personalize os métodos de verificação e a aparência do seu widget.</p>
                 </div>
 
@@ -259,7 +256,7 @@
                     A Inteligência por trás da <span class="text-blue-500">Invisibilidade.</span>
                 </h2>
                 <p class="text-zinc-400 text-lg">
-                    O nosso ecossistema utiliza múltiplos sinais para validar a identidade de forma inteligente. O utilizador só interage quando estritamente necessário, garantindo uma experiência contínua e segura.
+                    Nosso ecossistema utiliza múltiplos sinais para validar a identidade de forma inteligente. O usuário só interage quando estritamente necessário, garantindo uma experiência contínua e segura.
                 </p>
             </div>
 
@@ -292,7 +289,7 @@
                         Documento + Selfie
                     </h3>
                     <p class="text-zinc-400 leading-relaxed">
-                        Combina uma selfie ao vivo com um documento oficial com foto (Cartão de Cidadão, Passaporte) para verificação com altíssimo nível de garantia.
+                        Combina uma selfie ao vivo com um documento oficial com foto (RG, CNH, Passaporte) para verificação com altíssimo nível de garantia.
                     </p>
                 </div>
 
@@ -443,7 +440,7 @@
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-20">
                 <div class="col-span-2 lg:col-span-2">
                     <div class="flex items-center gap-2 mb-6">
-                    <svg width="179" height="42" viewBox="0 0 179 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg viewBox="0 0 179 42" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-auto h-8 md:h-10">
                         <path d="M84.3428 10.178C85.7057 9.51927 87.5002 10.7913 87.2503 12.3132C87.4093 14.2666 84.4564 15.0844 83.457 13.4716C82.5257 12.3813 83.1162 10.7231 84.3428 10.178Z" fill="white"/>
                         <path d="M72.7121 7.01124C73.8251 6.98853 74.9381 6.9431 76.0511 7.05667C76.0511 18.1414 76.0739 29.2261 76.0284 40.3108C74.9381 40.3108 73.8478 40.3109 72.7575 40.3336C72.7121 39.6748 72.6667 38.9934 72.6894 38.3347C72.7121 27.886 72.6667 17.46 72.7121 7.01124Z" fill="white"/>
                         <path d="M117.823 7.0113C118.936 6.98858 120.027 6.98858 121.14 7.0113C121.253 18.1187 121.185 29.2262 121.162 40.3336C120.027 40.3563 118.914 40.3563 117.778 40.3336C117.778 29.2262 117.733 18.1187 117.823 7.0113Z" fill="white"/>
@@ -477,7 +474,7 @@
                     <ul class="space-y-4 text-zinc-500 text-sm">
                         <li><a href="#" class="hover:text-blue-500 transition-colors">Sobre Nós</a></li>
                         <li><a href="#" class="hover:text-blue-500 transition-colors">Confiança e Segurança</a></li>
-                        <li><a href="#" class="hover:text-blue-500 transition-colors">Contacte-nos</a></li>
+                        <li><a href="#" class="hover:text-blue-500 transition-colors">Entre em contato</a></li>
                     </ul>
                 </div>
 
@@ -496,7 +493,7 @@
                         <li><a href="#" class="hover:text-blue-500 transition-colors">Integração API</a></li>
                         <li><a href="#" class="hover:text-blue-500 transition-colors">Aviso Legal</a></li>
                         <li><a href="#" class="hover:text-blue-500 transition-colors">Política de Privacidade</a></li>
-                        <li><a href="#" class="hover:text-blue-500 transition-colors">T&C para Utilizadores</a></li>
+                        <li><a href="#" class="hover:text-blue-500 transition-colors">T&C para Usuários</a></li>
                     </ul>
                 </div>
             </div>
@@ -517,6 +514,80 @@
             </span>
         </div>
     </footer>
+
+    <!-- XClickID Verification Seal Example -->
+    <div class="xclick-wrapper fixed bottom-8 right-8 z-[100] group" id="xclickWidget">
+        <!-- Tooltip Card -->
+        <div class="xclick-card absolute bottom-full right-0 mb-4 w-64 glass-panel p-5 rounded-2xl border border-white/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 shadow-2xl">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex flex-col">
+                    <span class="text-white font-bold text-sm tracking-tight">XClickID</span>
+                    <span class="text-[10px] text-zinc-500 uppercase tracking-widest font-semibold">Selo de Identidade</span>
+                </div>
+                <div class="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-2 py-0.5 rounded text-[10px] font-bold">18+</div>
+            </div>
+
+            <div class="space-y-3">
+                <div class="flex justify-between items-center text-[11px]">
+                    <span class="text-zinc-500">Status</span>
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] animate-pulse"></div>
+                        <span class="font-bold text-green-400">APROVADO</span>
+                    </div>
+                </div>
+
+                <!-- Session ID -->
+                <div class="flex justify-between items-center text-[11px]">
+                    <span class="text-zinc-500">Sessão</span>
+                    <span class="font-mono text-zinc-400" id="xc-hash">6c9f...a2e1</span>
+                </div>
+
+                <!-- Localização & IP (Compacto) -->
+                <div class="flex justify-between items-center border-t border-white/5 pt-3 mt-3 text-[11px]">
+                    <span class="text-zinc-500">Origem</span>
+                    <div class="text-right">
+                        <div class="flex items-center gap-2 justify-end">
+                            <span id="xc-country" class="text-white font-medium">--</span>
+                            <span class="text-zinc-700">/</span>
+                            <span id="xc-ip" class="text-zinc-400 font-mono flex items-center gap-1">
+                                <span class="xc-spinner w-2 h-2 border-t-2 border-blue-500 rounded-full animate-spin"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shield Icon -->
+        <div class="shield-container cursor-pointer hover:scale-110 transition-transform duration-300 drop-shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+            <svg width="40" height="46" viewBox="0 0 32 37" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-10 h-auto">
+                <path d="M8.01369 29.4334L15.7697 34.9734L23.5258 29.4334C27.9934 26.2423 30.6447 21.0901 30.6447 15.6V7.34845L15.7697 0.97345L0.894745 7.34845V15.6C0.894745 21.0901 3.54617 26.2423 8.01369 29.4334Z" fill="url(#paint0_linear_widget)" stroke="url(#paint1_linear_widget)" stroke-width="1.78947"/>
+                <path d="M29.862 7.6424V15.6004C29.8618 20.9459 27.2802 25.9621 22.9303 29.0692L15.4342 34.4227L7.93814 29.0692C3.58839 25.9621 1.00665 20.9459 1.0065 15.6004V7.6424L15.4342 1.45978L29.862 7.6424Z" stroke="url(#paint2_linear_widget)" stroke-width="0.894737"/>
+                <path d="M11.8832 16.9031C12.1259 16.9159 12.2821 17.0551 12.3842 17.1805C12.4338 17.2413 12.4778 17.3076 12.5131 17.3602L12.6118 17.4969L12.6254 17.5145C12.9703 18.0061 13.3439 18.4749 13.7202 18.9598C14.0944 19.442 14.469 19.9379 14.8032 20.4695L14.9223 20.659L14.7475 20.7986C14.134 21.2849 13.5057 21.7488 12.8842 22.2108C12.2615 22.6736 11.6447 23.1351 11.0473 23.6219L11.0395 23.6277L10.8891 23.4276L11.0385 23.6277C10.8308 23.7835 10.5641 24.0277 10.2621 24.1619L10.2221 24.1795L10.1782 24.1824C9.97658 24.1968 9.83033 24.099 9.73773 24.0203C9.69295 23.9823 9.64882 23.938 9.61859 23.909C9.58414 23.8759 9.56139 23.8546 9.54144 23.8406L9.51996 23.826L9.50238 23.8074C9.26567 23.5564 9.00844 23.3309 8.74164 23.0887C8.47862 22.8499 8.20907 22.5975 7.97308 22.3065L7.93109 22.2537L7.92035 22.1873C7.89062 21.9941 7.97752 21.8402 8.04047 21.7469C8.07154 21.7008 8.10941 21.6527 8.13226 21.6219C8.15944 21.5853 8.174 21.5628 8.18207 21.5467L8.19183 21.5272L8.20453 21.5086C9.20896 20.1594 10.2236 18.8668 11.2075 17.5252L11.2123 17.5184L11.2172 17.5125C11.25 17.4732 11.2819 17.431 11.3168 17.3846C11.3506 17.3396 11.3882 17.289 11.4272 17.2401C11.5056 17.1415 11.6019 17.0344 11.728 16.9471L11.7983 16.8983L11.8832 16.9031ZM19.2602 16.9725C19.3478 16.9503 19.4371 16.9551 19.5229 16.9852L19.6069 17.0242L19.6371 17.0408L19.6616 17.0652C19.8447 17.2484 20.0016 17.445 20.1469 17.6375L20.5717 18.201L20.5795 18.2108C21.0226 18.8237 21.4874 19.4182 21.9536 20.0223C22.4185 20.6249 22.8841 21.2354 23.3198 21.8738L23.4272 22.032L23.3032 22.1776C22.7673 22.8027 22.2244 23.4213 21.6196 23.9959L21.6186 23.9949C21.4669 24.1659 21.2645 24.1981 21.0932 24.1639C20.9327 24.1317 20.7881 24.043 20.684 23.952C20.1197 23.5139 19.5519 23.0798 18.9838 22.6473L17.2807 21.3514C17.0105 21.1447 16.7746 20.9091 16.5453 20.6492L16.4096 20.494L16.5356 20.3309C17.2796 19.3637 18.0362 18.3843 18.7631 17.4051L18.7739 17.3904L18.7875 17.3768C18.808 17.3562 18.8312 17.3264 18.8725 17.2742C18.9084 17.2289 18.9573 17.1682 19.0141 17.1151C19.0708 17.0622 19.153 16.9997 19.2602 16.9725ZM21.3627 8.77618C22.0515 9.31192 22.6153 10.0117 23.1752 10.6004H23.1733C23.2616 10.6866 23.3148 10.7924 23.3207 10.9119C23.3263 11.0259 23.2887 11.1256 23.2524 11.1971C23.2157 11.2692 23.1676 11.3353 23.1313 11.3856C23.0899 11.4428 23.0644 11.4777 23.0463 11.5086L23.0385 11.5213L23.0297 11.533C22.4607 12.288 21.889 13.0422 21.3159 13.7957L17.8725 18.3133C17.2997 19.0664 16.7282 19.8197 16.1596 20.574C16.0457 20.7497 15.8519 20.8319 15.6811 20.8475C15.5029 20.8636 15.2848 20.8135 15.143 20.6434L15.1362 20.6346C12.8455 17.6151 10.5714 14.5976 8.26703 11.5945L8.26117 11.5877C8.18838 11.4858 8.07927 11.3285 8.02679 11.1561C7.97059 10.9714 7.97484 10.7418 8.15961 10.5486H8.15863C8.69811 9.93425 9.25419 9.34734 9.85687 8.78986L9.99359 8.6629L10.1547 8.75861C10.8702 9.18491 11.529 9.73589 12.1567 10.2176L13.7836 11.4568L15.4116 12.6844L15.4213 12.6922L15.4301 12.7C15.4921 12.7568 15.5572 12.7887 15.6108 12.7977C15.6577 12.8055 15.7006 12.7977 15.7455 12.7625L15.7553 12.7547C16.6502 12.1186 17.5239 11.4454 18.4018 10.7684C19.2785 10.0923 20.1605 9.4121 21.0649 8.76935L21.2162 8.66193L21.3627 8.77618Z" fill="url(#paint3_linear_widget)" stroke="#4A4A4A" stroke-width="0.5"/>
+                <defs>
+                    <linearGradient id="paint0_linear_widget" x1="19.5724" y1="-1.71076" x2="9.2829" y2="38.105" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#0F0F0F"/>
+                        <stop offset="1" stop-color="#050505"/>
+                    </linearGradient>
+                    <linearGradient id="paint1_linear_widget" x1="30.7566" y1="0.97345" x2="1.23028" y2="34.9735" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#3B82F6"/>
+                        <stop offset="1" stop-color="#1D4ED8"/>
+                    </linearGradient>
+                    <linearGradient id="paint2_linear_widget" x1="30.4211" y1="0.97345" x2="0.894766" y2="34.9735" gradientUnits="userSpaceOnUse">
+                        <stop offset="0" stop-color="#60A5FA"/>
+                        <stop offset="1" stop-color="#3B82F6"/>
+                    </linearGradient>
+                    <linearGradient id="paint3_linear_widget" x1="15.6387" y1="8.97345" x2="15.6387" y2="23.9343" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#8C8C8C"/>
+                        <stop offset="0.220268" stop-color="#C4C4C4"/>
+                        <stop offset="0.454403" stop-color="#E3E3E3"/>
+                        <stop offset="0.841346" stop-color="#F2F2F2"/>
+                        <stop offset="0.995192" stop-color="#BEBEBE"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+    </div>
 
     <script src="assets/js/main.js"></script>
 </body>
