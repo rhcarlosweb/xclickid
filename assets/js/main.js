@@ -48,7 +48,7 @@
             mobileMenu.classList.add('translate-x-full');
             setTimeout(() => {
                 document.body.style.overflow = '';
-            }, 700);
+            }, 500);
         }
     };
 
