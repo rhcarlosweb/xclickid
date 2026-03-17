@@ -31,7 +31,7 @@ Os links âncora da navbar (ex: `#overview`, `#methods`) serão atualizados para
 | Sobre Nós | → `sobre-nos.php` |
 | Confiança e Segurança | → `confianca-seguranca.php` |
 | Entre em contato | → `contato.php` |
-| Falar com nossos especialistas | → link direto `https://wa.me/NUMERO` (substituir pelo número WhatsApp Business da XClickID) |
+| Falar com nossos especialistas | → link direto `https://wa.me/5511999999999` (placeholder — substituir pelo número real) |
 | Ajuda / FAQ | → `ajuda-faq.php` |
 | Métodos de Verificação | → mantém `index.php#methods` |
 | Integração API | → **removido** do footer (sem redirect, sem página) |
@@ -119,8 +119,8 @@ index.php                   — refatorado para usar _header.php e _footer.php
 **Hero:** "Entre em Contato" / "Estamos aqui para ajudar você e sua empresa."
 
 - Grid 2 colunas:
-  - **Informações de Contato:** email (contato@xclickid.com.br), endereço (Brasil), horário (Seg–Sex, 9h–18h)
-  - **Card WhatsApp destacado** (`glass-panel`, borda azul): botão "Falar pelo WhatsApp" linkando para `https://wa.me/NUMERO`
+  - **Informações de Contato:** email (contato@xclickid.com), endereço (Brasil), horário (Seg–Sex, 9h–18h)
+  - **Card WhatsApp destacado** (`glass-panel`, borda azul): botão "Falar pelo WhatsApp" linkando para `https://wa.me/5511999999999` (placeholder)
 
 ### Ajuda / FAQ (`ajuda-faq.php`)
 
@@ -159,7 +159,7 @@ index.php                   — refatorado para usar _header.php e _footer.php
 5. Direitos do titular (LGPD)
 6. Cookies e rastreamento
 7. Segurança dos dados
-8. Contato com o DPO (dpo@xclickid.com.br)
+8. Contato com o DPO (contato@xclickid.com)
 
 ### T&C para Usuários (`termos-usuarios.php`)
 

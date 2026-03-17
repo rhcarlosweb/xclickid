@@ -28,6 +28,38 @@
         });
     }
 
+    // Mobile Menu Logic
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('is-active');
+            mobileMenu.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    const closeMobileMenu = () => {
+        if (mobileMenu) {
+            mobileMenu.classList.remove('is-active');
+            mobileMenu.classList.add('translate-x-full');
+            setTimeout(() => {
+                document.body.style.overflow = '';
+            }, 700);
+        }
+    };
+
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+    }
+
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+
     const observerOptions = {
         root: null,
         threshold: 0.1,
