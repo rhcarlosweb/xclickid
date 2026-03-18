@@ -8,7 +8,7 @@
 
 ## Overview
 
-Add a contact modal to the site so visitors can submit their name, e-mail, phone, and website URLs. Submissions are stored in a secure local JSON file. An admin dashboard at a hidden URL allows the admin to view, delete, and export all contacts as CSV.
+Add a contact form that appears in two contexts: as a modal triggered from multiple points across the site, and inline on the `contato.php` page (replacing the current contact info card). Submissions from both contexts use the same backend endpoint. Data is stored in a secure local JSON file. An admin dashboard at a hidden URL allows the admin to view, delete, and export all contacts as CSV.
 
 ---
 
@@ -67,6 +67,40 @@ A single `<div id="contact-modal">` appended before `</body>` in `_header.php`. 
 ### Visual Style
 
 Consistent with site: dark background `#050505`, primary blue `#3B82F6` for focus states and CTA button, white/5 borders, Inter font, rounded-2xl card, same glass-morphism aesthetic.
+
+---
+
+## 1b. Inline Form on contato.php
+
+The same form fields and validation are rendered inline on `contato.php` — no modal wrapper, no overlay, no close button.
+
+### Layout Changes to contato.php
+
+The current "Informações de Contato" glass-panel card is modified:
+
+- **Remove:** "Localização" row (map-pin icon + "São Paulo, SP — Brasil")
+- **Remove:** "Horário de Atendimento" row (clock icon + "Segunda a Sexta, 9h às 18h")
+- **Remove:** the "Estou interessado" mailto button at the bottom of the card
+- **Keep:** "E-mail" row (mail icon + `contato@xclickid.com`)
+- **Add:** below the e-mail row, a new `<section>` or second card containing the inline contact form
+
+### Inline Form Rendering
+
+The form HTML is extracted into a shared PHP partial `_contact-form.php` that renders the fields (Nome, E-mail, Telefone, Sites repeater) and the submit button. This partial is:
+
+- Included inside the modal (`_header.php`) wrapped in the modal card
+- Included directly in `contato.php` inside a glass-panel card
+
+This avoids duplication of the form markup. The `action` in both contexts is `save-contato.php` via `fetch()`.
+
+The inline form on `contato.php` has the same success/error feedback behavior as the modal version (inline state change, no page reload), but instead of auto-closing, it shows a persistent success message.
+
+### Modified Files (addition)
+
+```
+_contact-form.php          ← new shared partial: form fields only (no modal chrome)
+contato.php                ← remove location + hours rows; include inline form partial
+```
 
 ---
 
@@ -205,6 +239,7 @@ Columns: Data/Hora | Nome | E-mail | Telefone | Sites | Ações
 data/.htaccess             ← blocks public access to data directory
 data/contacts.json         ← auto-created on first submission (in .gitignore)
 data/login_attempts.json   ← brute force log (in .gitignore)
+_contact-form.php          ← shared form partial (fields + submit button, no modal chrome)
 save-contato.php           ← AJAX endpoint: validates and saves contact
 admin-action.php           ← POST endpoint: delete and export CSV
 painel-contatos.php        ← login form + dashboard (session-protected)
@@ -213,9 +248,10 @@ painel-contatos.php        ← login form + dashboard (session-protected)
 ### Modified Files
 
 ```
-_header.php                ← CSRF meta tag + modal markup + nav CTA trigger
+_header.php                ← CSRF meta tag + modal markup (includes _contact-form.php) + nav CTA trigger
 _footer.php                ← data-open-modal="contact" on relevant links
-assets/js/main.js          ← modal open/close, repeater logic, AJAX submit
+contato.php                ← remove location + hours rows; include _contact-form.php inline
+assets/js/main.js          ← modal open/close, repeater logic, AJAX submit (shared logic for both contexts)
 .gitignore                 ← add data/contacts.json, data/login_attempts.json
 .htaccess                  ← exclude backend PHP files from 301 redirect rule
 ```
