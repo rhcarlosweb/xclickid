@@ -1,7 +1,16 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($pageTitle ?? 'XClickID - Valide seus usuários em segundos!') ?></title>
 
