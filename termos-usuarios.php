@@ -2,9 +2,9 @@
 <?php include '_header.php'; ?>
 
 <main>
-    <section class="pt-32 pb-16 relative z-10">
+    <section class="pt-32 pb-8 relative z-10">
         <div class="max-w-3xl mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-5xl font-black tracking-tight text-white mb-4">Termos e Condições</h1>
+            <h1 class="text-4xl md:text-5xl font-semibold tracking-tight text-white mb-3">Termos e Condições</h1>
             <p class="text-xl text-zinc-400">Condições de uso da plataforma XClickID.</p>
         </div>
     </section>

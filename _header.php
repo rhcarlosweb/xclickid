@@ -84,14 +84,14 @@
             </div>
 
             <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-zinc-400">
-                <a href="index.php#overview" class="hover:text-white transition-colors">Visão Geral</a>
-                <a href="index.php#methods" class="hover:text-white transition-colors">Métodos</a>
-                <a href="index.php#compliance" class="hover:text-white transition-colors">Segurança</a>
-                <a href="index.php#business" class="hover:text-white transition-colors">Como Funciona</a>
+                <a href="/#overview" class="hover:text-white transition-colors">Visão Geral</a>
+                <a href="/#methods" class="hover:text-white transition-colors">Métodos</a>
+                <a href="/#compliance" class="hover:text-white transition-colors">Segurança</a>
+                <a href="/#business" class="hover:text-white transition-colors">Como Funciona</a>
             </div>
 
             <div class="flex items-center gap-3 md:gap-4">
-                <a href="contato.php" class="bg-white text-black px-4 md:px-5 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center gap-2 group whitespace-nowrap">
+                <a href="/contato" class="bg-white text-black px-4 md:px-5 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center gap-2 group whitespace-nowrap">
                     <span class="hidden xs:inline">Falar com especialistas</span>
                     <span class="xs:hidden">Contato</span>
                     <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:rotate-45 transition-transform"></i>
@@ -132,21 +132,21 @@
 
         <div class="flex flex-col gap-6 text-4xl font-bold tracking-tighter text-white py-12">
             <div class="mobile-link-wrapper">
-                <a href="index.php#overview" class="mobile-link">Visão Geral</a>
+                <a href="/#overview" class="mobile-link">Visão Geral</a>
             </div>
             <div class="mobile-link-wrapper">
-                <a href="index.php#methods" class="mobile-link">Métodos</a>
+                <a href="/#methods" class="mobile-link">Métodos</a>
             </div>
             <div class="mobile-link-wrapper">
-                <a href="index.php#compliance" class="mobile-link">Segurança</a>
+                <a href="/#compliance" class="mobile-link">Segurança</a>
             </div>
             <div class="mobile-link-wrapper">
-                <a href="index.php#business" class="mobile-link">Como Funciona</a>
+                <a href="/#business" class="mobile-link">Como Funciona</a>
             </div>
         </div>
 
         <div class="mobile-menu-footer pt-8 border-t border-white/5">
-            <a href="contato.php" class="bg-white text-black w-full py-4 rounded-full font-bold text-center block hover:bg-blue-500 hover:text-white transition-all">
+            <a href="/contato" class="bg-white text-black w-full py-4 rounded-full font-bold text-center block hover:bg-blue-500 hover:text-white transition-all">
                 Falar com Especialistas
             </a>
         </div>
