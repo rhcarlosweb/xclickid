@@ -5,6 +5,18 @@ if (session_status() === PHP_SESSION_NONE) {
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
+
+function assetVersion(string $relativePath): string {
+    $relativePath = ltrim($relativePath, '/');
+    $fullPath = __DIR__ . '/' . $relativePath;
+
+    if (!file_exists($fullPath)) {
+        // Fallback: se o arquivo não existir, ainda assim evita quebrar a página.
+        return '0';
+    }
+
+    return (string) filemtime($fullPath);
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -64,7 +76,7 @@ if (empty($_SESSION['csrf_token'])) {
     <!-- GSAP for Smooth Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
-    <link rel="stylesheet" href="assets/css/main.css?v=2">
+    <link rel="stylesheet" href="assets/css/main.css?v=<?= htmlspecialchars(assetVersion('assets/css/main.css')) ?>">
 </head>
 <body class="relative min-h-screen selection:bg-blue-500/30 selection:text-blue-200">
 

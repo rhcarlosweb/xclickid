@@ -145,6 +145,6 @@
     </div>
 
     <script src="assets/js/lenis-setup.js"></script>
-    <script src="assets/js/main.js?v=3"></script>
+    <script src="assets/js/main.js?v=<?= htmlspecialchars(assetVersion('assets/js/main.js')) ?>"></script>
 </body>
 </html>
