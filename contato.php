@@ -11,7 +11,7 @@
 
     <section class="py-16 relative z-10">
         <div class="max-w-3xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 gap-6">
 
                 <!-- Informações de Contato -->
                 <div class="glass-panel p-8 rounded-xl space-y-6">
@@ -46,9 +46,20 @@
                             <p class="text-white">Segunda a Sexta, 9h às 18h</p>
                         </div>
                     </div>
+
+                    <div class="pt-2">
+                        <a
+                            href="mailto:contato@xclickid.com?subject=Estou%20interessado&body=Ol%C3%A1%2C%20tenho%20interesse%20na%20XClickID.%0A%0APode%20me%20ajudar%20com%20informa%C3%A7%C3%B5es%20de%20integra%C3%A7%C3%A3o%3F"
+                            class="bg-blue-500 text-white px-6 py-3 rounded-full font-bold text-sm inline-flex items-center justify-center gap-2 hover:bg-blue-600 transition-colors w-full"
+                        >
+                            <i data-lucide="sparkles" class="w-4 h-4"></i>
+                            Estou interessado
+                        </a>
+                    </div>
                 </div>
 
                 <!-- WhatsApp CTA -->
+                <!--
                 <div class="glass-panel p-8 rounded-xl border border-blue-500/20 flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 rounded-full bg-green-500/10 text-green-400 flex items-center justify-center mb-4 border border-green-500/20">
@@ -63,6 +74,7 @@
                         Iniciar conversa no WhatsApp
                     </a>
                 </div>
+                -->
 
             </div>
         </div>

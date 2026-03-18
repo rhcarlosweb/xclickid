@@ -183,4 +183,166 @@
                 });
         }, 1500);
     }
+
+    // ===================== CONTACT MODAL =====================
+
+    const contactModal        = document.getElementById('contact-modal');
+    const contactModalClose   = document.getElementById('contact-modal-close');
+    const contactModalOverlay = document.getElementById('contact-modal-overlay');
+
+    const openContactModal = () => {
+        if (!contactModal) return;
+        contactModal.classList.remove('hidden');
+        contactModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeContactModal = () => {
+        if (!contactModal) return;
+        contactModal.classList.add('hidden');
+        contactModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('[data-open-modal="contact"]').forEach(el => {
+        el.addEventListener('click', e => { e.preventDefault(); openContactModal(); });
+    });
+
+    if (contactModalClose)   contactModalClose.addEventListener('click', closeContactModal);
+    if (contactModalOverlay) contactModalOverlay.addEventListener('click', closeContactModal);
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeContactModal();
+    });
+
+    // ===================== CONTACT FORMS (modal + inline) =====================
+
+    const CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
+    const MAX_SITES  = 10;
+
+    document.querySelectorAll('.contact-form').forEach(form => {
+        const isModal     = form.id === 'contact-form-modal';
+        const sitesList   = form.querySelector('.contact-sites-list');
+        const addSiteBtn  = form.querySelector('.contact-add-site');
+        const formBody    = form.querySelector('.contact-form-body');
+        const successEl   = form.querySelector('.contact-success');
+        const errorEl     = form.querySelector('.contact-error');
+        const submitBtn   = form.querySelector('.contact-submit');
+        const submitText  = form.querySelector('.contact-submit-text');
+
+        // Repeater: add site row
+        if (addSiteBtn && sitesList) {
+            addSiteBtn.addEventListener('click', () => {
+                const rows = sitesList.querySelectorAll('.contact-site-row');
+                if (rows.length >= MAX_SITES) return;
+
+                const newRow = rows[0].cloneNode(true);
+                const input  = newRow.querySelector('input');
+                input.value  = '';
+                input.classList.remove('border-red-500');
+
+                const removeBtn = document.createElement('button');
+                removeBtn.type      = 'button';
+                removeBtn.className = 'flex-shrink-0 w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-zinc-500 hover:text-red-400 hover:bg-red-400/10 transition-colors';
+                removeBtn.setAttribute('aria-label', 'Remover site');
+                removeBtn.innerHTML = '<i data-lucide="x" class="w-4 h-4"></i>';
+                removeBtn.addEventListener('click', () => {
+                    newRow.remove();
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                });
+                newRow.appendChild(removeBtn);
+
+                sitesList.appendChild(newRow);
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            });
+        }
+
+        // Form submission
+        form.addEventListener('submit', async e => {
+            e.preventDefault();
+
+            const nameEl    = form.querySelector('[name="name"]');
+            const emailEl   = form.querySelector('[name="email"]');
+            const phoneEl   = form.querySelector('[name="phone"]');
+            const siteInputs = form.querySelectorAll('[name="sites[]"]');
+
+            // Reset validation state
+            form.querySelectorAll('.contact-field').forEach(f => f.classList.remove('border-red-500'));
+            if (errorEl) { errorEl.classList.add('hidden'); errorEl.textContent = ''; }
+
+            let valid = true;
+
+            if (!nameEl.value.trim() || nameEl.value.trim().length < 2) {
+                nameEl.classList.add('border-red-500'); valid = false;
+            }
+            if (!emailEl.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
+                emailEl.classList.add('border-red-500'); valid = false;
+            }
+            if (!phoneEl.value.trim()) {
+                phoneEl.classList.add('border-red-500'); valid = false;
+            }
+            siteInputs.forEach(input => {
+                if (!input.value.trim() || !/^https?:\/\/.+/.test(input.value.trim())) {
+                    input.classList.add('border-red-500'); valid = false;
+                }
+            });
+
+            if (!valid) {
+                if (errorEl) {
+                    errorEl.classList.remove('hidden');
+                    errorEl.textContent = 'Por favor, corrija os campos destacados.';
+                }
+                return;
+            }
+
+            // Disable submit
+            if (submitBtn)  submitBtn.disabled = true;
+            if (submitText) submitText.textContent = 'Enviando...';
+
+            try {
+                const res = await fetch('/save-contato.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': CSRF_TOKEN
+                    },
+                    body: JSON.stringify({
+                        name:  nameEl.value.trim(),
+                        email: emailEl.value.trim(),
+                        phone: phoneEl.value.trim(),
+                        sites: Array.from(siteInputs).map(i => i.value.trim())
+                    })
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    // Show success state
+                    if (formBody)  formBody.classList.add('hidden');
+                    if (successEl) {
+                        successEl.classList.remove('hidden');
+                        if (typeof lucide !== 'undefined') lucide.createIcons();
+                    }
+                    // Auto-close modal after 3s; inline form stays open showing success
+                    if (isModal) setTimeout(closeContactModal, 3000);
+                } else {
+                    if (errorEl) {
+                        errorEl.classList.remove('hidden');
+                        errorEl.textContent = data.error || 'Erro ao enviar. Tente novamente.';
+                    }
+                    if (submitBtn)  submitBtn.disabled = false;
+                    if (submitText) submitText.textContent = 'Enviar mensagem';
+                }
+            } catch {
+                if (errorEl) {
+                    errorEl.classList.remove('hidden');
+                    errorEl.textContent = 'Erro de conexão. Tente novamente.';
+                }
+                if (submitBtn)  submitBtn.disabled = false;
+                if (submitText) submitText.textContent = 'Enviar mensagem';
+            }
+        });
+    });
+
+    // ==================== /CONTACT FORMS ====================
 })();
