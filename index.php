@@ -3,7 +3,7 @@
 
 
     <!-- Hero Section -->
-    <section id="overview" class="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden z-10">
+    <section id="overview" class="relative min-h-screen flex items-center pt-16 pb-6 md:pt-24 md:pb-12 overflow-hidden z-10">
         <!-- Background Blobs -->
         <div class="absolute top-1/4 right-0 w-[800px] h-[800px] bg-blue-600/10 rounded-full blur-[120px] -z-10 pointer-events-none translate-x-1/2"></div>
         <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[100px] -z-10 pointer-events-none -translate-x-1/2"></div>
