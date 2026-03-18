@@ -26,26 +26,13 @@
                             <a href="mailto:contato@xclickid.com" class="text-white hover:text-blue-400 transition-colors">contato@xclickid.com</a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="flex items-start gap-4">
-                        <div class="w-9 h-9 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center flex-shrink-0 border border-blue-500/20">
-                            <i data-lucide="map-pin" class="w-4 h-4"></i>
-                        </div>
-                        <div>
-                            <p class="text-sm text-zinc-500 mb-1">Localização</p>
-                            <p class="text-white">São Paulo, SP — Brasil</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-4">
-                        <div class="w-9 h-9 rounded-full bg-blue-500/10 text-blue-400 flex items-center justify-center flex-shrink-0 border border-blue-500/20">
-                            <i data-lucide="clock" class="w-4 h-4"></i>
-                        </div>
-                        <div>
-                            <p class="text-sm text-zinc-500 mb-1">Horário de Atendimento</p>
-                            <p class="text-white">Segunda a Sexta, 9h às 18h</p>
-                        </div>
-                    </div>
+                <!-- Inline Contact Form -->
+                <div class="glass-panel p-8 rounded-xl">
+                    <h2 class="text-xl font-bold text-white mb-1">Envie uma mensagem</h2>
+                    <p class="text-zinc-400 text-sm mb-6">Preencha seus dados e entraremos em contato.</p>
+                    <?php $formId = 'contact-form-inline'; include __DIR__ . '/_contact-form.php'; ?>
                 </div>
 
                 <!-- WhatsApp CTA -->
