@@ -100,11 +100,11 @@ if (empty($_SESSION['csrf_token'])) {
             </div>
 
             <div class="flex items-center gap-3 md:gap-4">
-                <a href="contato.php" class="bg-white text-black px-4 md:px-5 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center gap-2 group whitespace-nowrap">
+                <button type="button" data-open-modal="contact" class="bg-white text-black px-4 md:px-5 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold hover:bg-blue-500 hover:text-white transition-all duration-300 flex items-center gap-2 group whitespace-nowrap">
                     <span class="hidden xs:inline">Falar com especialistas</span>
                     <span class="xs:hidden">Contato</span>
                     <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:rotate-45 transition-transform"></i>
-                </a>
+                </button>
 
                 <button id="mobile-menu-toggle" class="lg:hidden w-10 h-10 rounded-full glass-panel flex items-center justify-center text-white border border-white/10" aria-label="Menu">
                     <i data-lucide="menu" class="w-5 h-5"></i>
@@ -155,8 +155,25 @@ if (empty($_SESSION['csrf_token'])) {
         </div>
 
         <div class="mobile-menu-footer pt-8 border-t border-white/5">
-            <a href="contato.php" class="bg-white text-black w-full py-4 rounded-full font-bold text-center block hover:bg-blue-500 hover:text-white transition-all">
+            <button type="button" data-open-modal="contact" class="bg-white text-black w-full py-4 rounded-full font-bold text-center block hover:bg-blue-500 hover:text-white transition-all">
                 Falar com Especialistas
-            </a>
+            </button>
         </div>
     </div>
+
+    <!-- ===================== CONTACT MODAL ===================== -->
+    <div id="contact-modal" class="fixed inset-0 z-[200] flex items-center justify-center p-4 hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+        <!-- Overlay -->
+        <div id="contact-modal-overlay" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+        <!-- Card -->
+        <div class="relative w-full max-w-md bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <!-- Close -->
+            <button id="contact-modal-close" type="button" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-white/10 transition-colors" aria-label="Fechar modal">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+            <h2 id="contact-modal-title" class="text-xl font-bold text-white mb-1">Fale com um especialista</h2>
+            <p class="text-zinc-400 text-sm mb-6">Preencha seus dados e entraremos em contato.</p>
+            <?php $formId = 'contact-form-modal'; include __DIR__ . '/_contact-form.php'; ?>
+        </div>
+    </div>
+    <!-- ==================== /CONTACT MODAL ==================== -->
