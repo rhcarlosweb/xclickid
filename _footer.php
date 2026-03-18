@@ -30,7 +30,7 @@
                     <ul class="space-y-4 text-zinc-500 text-sm">
                         <li><a href="sobre-nos.php" class="hover:text-blue-500 transition-colors">Sobre Nós</a></li>
                         <li><a href="confianca-seguranca.php" class="hover:text-blue-500 transition-colors">Confiança e Segurança</a></li>
-                        <li><button type="button" data-open-modal="contact" class="hover:text-blue-500 transition-colors text-left">Entre em contato</button></li>
+                        <li><a href="contato.php" class="hover:text-blue-500 transition-colors text-left">Entre em contato</a></li>
                     </ul>
                 </div>
 
