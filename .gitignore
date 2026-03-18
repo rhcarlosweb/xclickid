@@ -16,3 +16,7 @@ assets/css/main.css.map
 *.swp
 *.swo
 *~
+
+# Contact data (PII — never commit)
+data/contacts.json
+data/login_attempts.json
