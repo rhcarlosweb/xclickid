@@ -29,6 +29,7 @@ A single `<div id="contact-modal">` appended before `</body>` in `_header.php`. 
 - Dark overlay (`bg-black/70 backdrop-blur-sm`) covering full viewport
 - Modal card: `bg-[#0a0a0a] border border-white/5 rounded-2xl` with glass styling
 - Close button (×) top-right
+- Hidden `<input type="hidden" name="csrf_token">` populated by JS from a meta tag
 - Form with fields (see below)
 
 ### Form Fields
@@ -38,22 +39,30 @@ A single `<div id="contact-modal">` appended before `</body>` in `_header.php`. 
 | Nome     | text    | yes      | min 2 chars                               |
 | E-mail   | email   | yes      | standard format validation                |
 | Telefone | tel     | yes      | accepts any format                        |
-| Sites    | repeater| yes      | min 1 URL input; "+" adds row; "×" removes |
+| Sites    | repeater| yes      | min 1 URL input; max 10; "+" adds row; "×" removes |
 
 ### Repeater Logic
 
-- Minimum 1 URL input visible by default
+- Minimum 1 URL input visible by default, maximum 10
 - "Adicionar site" button appends a new input row via JS (cloneNode)
 - Each row (except the first) has a remove button
-- URL inputs are validated as valid URLs client-side
+- URL inputs validated client-side: must start with `http://` or `https://`
+- If any URL is invalid on submit, all are flagged and submission is blocked
 
 ### Submission Flow
 
 1. Client-side validation runs on submit (border turns red on error)
-2. Valid form sends `fetch()` POST to `save-contato.php` with JSON body
+2. Valid form sends `fetch()` POST to `save-contato.php` with JSON body + `X-CSRF-Token` header
 3. Submit button shows spinner during request
 4. On success: form replaced with success message, modal auto-closes after 3s
 5. On error: inline error message shown below form, button re-enabled
+
+### CSRF Protection
+
+- `_header.php` generates a CSRF token per session: `$_SESSION['csrf_token'] = bin2hex(random_bytes(32))`
+- Token emitted in a `<meta name="csrf-token">` tag in `<head>`
+- JS reads this meta tag and sends token in `X-CSRF-Token` request header on every `fetch()` call
+- `save-contato.php` and `admin-action.php` both verify `$_SERVER['HTTP_X_CSRF_TOKEN'] === $_SESSION['csrf_token']` before processing
 
 ### Visual Style
 
@@ -78,6 +87,8 @@ Order deny,allow
 Deny from all
 ```
 
+`data/contacts.json` is listed in `.gitignore` to prevent committing PII.
+
 ### JSON Structure
 
 ```json
@@ -98,7 +109,11 @@ Deny from all
 
 ### Write Safety
 
-`save-contato.php` uses `fopen()` + `flock(LOCK_EX)` before writing to prevent data corruption from concurrent requests. UUID v4 is generated via PHP's `random_bytes()`.
+All file writes (save, delete) use `fopen()` + `flock(LOCK_EX)` to prevent data corruption from concurrent requests. This applies to both `save-contato.php` and `admin-action.php`. UUID v4 is generated via PHP's `random_bytes()`.
+
+### Server-side URL Validation
+
+`save-contato.php` validates each URL with `filter_var($url, FILTER_VALIDATE_URL)` and verifies the scheme is `http` or `https`. Maximum 10 URLs per submission. If any URL fails validation, the entire submission is rejected with a `400` response and a descriptive error message.
 
 ---
 
@@ -111,7 +126,13 @@ Deny from all
 ### Credentials
 
 - **User:** `edgar@onlinetizando.com`
-- **Password:** stored as `password_hash()` (bcrypt) — never plain text in source
+- **Password hash:** pre-computed with `password_hash('R98oU1N(L2}Z', PASSWORD_BCRYPT)` and stored as a PHP constant inside `painel-contatos.php`. The plain text password never appears in the code.
+
+```php
+// In painel-contatos.php
+define('ADMIN_EMAIL', 'edgar@onlinetizando.com');
+define('ADMIN_HASH', '$2y$12$...'); // generated once and hardcoded
+```
 
 ### Session Management
 
@@ -121,9 +142,11 @@ Deny from all
 
 ### Brute Force Protection
 
-Simple session-based rate limiting:
-- Counter incremented per failed attempt
-- After 5 failures: 15-minute lockout enforced via `$_SESSION['lockout_until']`
+File-based rate limiting (survives server restarts and cookie clearing):
+- Attempt log stored in `data/login_attempts.json` (also blocked by `.htaccess`)
+- Counter keyed by IP address + timestamp
+- After 5 failures from the same IP: 15-minute lockout
+- `data/login_attempts.json` also listed in `.gitignore`
 - Error messages are generic ("Credenciais inválidas") — no hint which field is wrong
 
 ---
@@ -137,7 +160,7 @@ Reuses site visual identity: dark theme, Tailwind CDN, Inter font, glass-morphis
 **Header bar:**
 - XClickID logo + "Painel de Contatos" title
 - Total contact count badge
-- "Exportar CSV" button
+- "Exportar CSV" button (HTML `<form method="POST">` targeting `admin-action.php`)
 - "Sair" button
 
 ### Contacts Table
@@ -146,26 +169,31 @@ Columns: Data/Hora | Nome | E-mail | Telefone | Sites | Ações
 
 - Ordered by `created_at` descending (newest first)
 - Sites column: each URL as a clickable `<a>` link (truncated if long)
-- Pagination: 20 contacts per page with prev/next controls
+- Pagination: 20 contacts per page with prev/next controls (`?page=N`)
 - Empty state: friendly message when no contacts exist
 
 ### Delete
 
-- Each row has a "Excluir" button
-- Triggers browser `confirm()` dialog
-- On confirm: POST to `admin-action.php` with `action=delete&id={uuid}`
-- PHP removes the entry from the JSON array and rewrites the file
-- Page reloads to reflect change
+- Each row has a "Excluir" button inside a `<form method="POST">` targeting `admin-action.php`
+- Form includes hidden fields: `action=delete`, `id={uuid}`, `page={current_page}`, `csrf_token`
+- JS `confirm()` intercepts the submit event before the form posts
+- PHP removes the entry from the JSON array (with `flock`) and rewrites the file
+- Redirect back to `painel-contatos.php?page={current_page}` after delete to preserve pagination state
+
+### admin-action.php CSRF Verification
+
+`admin-action.php` serves both plain HTML form submissions (delete, export) and must verify CSRF from the POST body (`$_POST['csrf_token']`). It does not use the `X-CSRF-Token` header (that is only for `fetch()` AJAX calls from the contact modal). The check is: `$_POST['csrf_token'] === $_SESSION['csrf_token']`.
 
 ### Export CSV
 
-- "Exportar CSV" button POSTs to `admin-action.php?action=export`
-- PHP reads all contacts and outputs with headers:
+- "Exportar CSV" is a `<form method="POST" action="admin-action.php">` with hidden fields: `action=export`, `csrf_token`
+- PHP reads all contacts, writes CSV rows, and outputs with headers:
   ```
-  Content-Type: text/csv
+  Content-Type: text/csv; charset=UTF-8
   Content-Disposition: attachment; filename="contatos-YYYY-MM-DD.csv"
   ```
 - Columns: ID, Data, Nome, E-mail, Telefone, Sites (pipe-separated if multiple)
+- Browser triggers file download directly from the form POST response
 
 ---
 
@@ -175,18 +203,35 @@ Columns: Data/Hora | Nome | E-mail | Telefone | Sites | Ações
 
 ```
 data/.htaccess             ← blocks public access to data directory
-data/contacts.json         ← auto-created on first submission
+data/contacts.json         ← auto-created on first submission (in .gitignore)
+data/login_attempts.json   ← brute force log (in .gitignore)
 save-contato.php           ← AJAX endpoint: validates and saves contact
-admin-action.php           ← AJAX/POST endpoint: delete and export
+admin-action.php           ← POST endpoint: delete and export CSV
 painel-contatos.php        ← login form + dashboard (session-protected)
 ```
 
 ### Modified Files
 
 ```
-_header.php                ← modal markup + open trigger on nav CTA button
+_header.php                ← CSRF meta tag + modal markup + nav CTA trigger
 _footer.php                ← data-open-modal="contact" on relevant links
 assets/js/main.js          ← modal open/close, repeater logic, AJAX submit
+.gitignore                 ← add data/contacts.json, data/login_attempts.json
+.htaccess                  ← exclude backend PHP files from 301 redirect rule
+```
+
+### .htaccess Backend Exclusion
+
+The root `.htaccess` has a rule that issues a `301` redirect for any request matching `*.php` in the URL path, converting POST to GET and breaking all backend endpoints. The three backend files must be excluded from this rule by adding `RewriteCond` exceptions before the redirect line:
+
+```apache
+# Redirect existing .php URLs to clean URLs
+# (exclude backend endpoints from redirect)
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
+RewriteCond %{THE_REQUEST} !/save-contato\.php [NC]
+RewriteCond %{THE_REQUEST} !/admin-action\.php [NC]
+RewriteCond %{THE_REQUEST} !/painel-contatos\.php [NC]
+RewriteRule ^ /%1 [R=301,L]
 ```
 
 ### No new dependencies
@@ -198,10 +243,13 @@ All implementation uses PHP vanilla + JS vanilla + Tailwind CDN already loaded.
 ## 6. Security Checklist
 
 - [ ] `data/.htaccess` blocks direct file access
+- [ ] `data/contacts.json` and `data/login_attempts.json` in `.gitignore`
 - [ ] PHP server-side validation before writing to JSON (sanitize all fields)
+- [ ] `filter_var(FILTER_VALIDATE_URL)` + scheme whitelist for URL fields
 - [ ] `password_hash()` / `password_verify()` for admin credentials
 - [ ] `session_regenerate_id()` after login
-- [ ] CSRF token on the contact form and admin actions
-- [ ] Rate limiting on login (5 attempts → 15 min lockout)
-- [ ] `flock(LOCK_EX)` on JSON write
+- [ ] CSRF token in `<meta>` tag; verified via `X-CSRF-Token` header on AJAX; verified via POST field on form submissions
+- [ ] Rate limiting on login via file-based IP tracking (5 attempts → 15 min lockout)
+- [ ] `flock(LOCK_EX)` on all JSON file writes (save, delete)
 - [ ] All output in dashboard escaped with `htmlspecialchars()`
+- [ ] Pagination state preserved in delete redirects
