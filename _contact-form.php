@@ -3,31 +3,32 @@
 // Modal:  $formId = 'contact-form-modal';
 // Inline: $formId = 'contact-form-inline';
 $formId = $formId ?? 'contact-form';
+$formIdEsc = htmlspecialchars($formId, ENT_QUOTES, 'UTF-8');
 ?>
-<form id="<?= htmlspecialchars($formId) ?>" class="contact-form" novalidate>
+<form id="<?= $formIdEsc ?>" class="contact-form" novalidate>
 
     <div class="contact-form-body space-y-5">
 
         <!-- Nome -->
         <div>
-            <label class="block text-sm text-zinc-400 mb-1.5" for="<?= $formId ?>-name">Nome</label>
-            <input type="text" id="<?= $formId ?>-name" name="name"
+            <label class="block text-sm text-zinc-400 mb-1.5" for="<?= $formIdEsc ?>-name">Nome</label>
+            <input type="text" id="<?= $formIdEsc ?>-name" name="name"
                    class="contact-field w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500 transition-colors text-sm"
                    placeholder="Seu nome completo">
         </div>
 
         <!-- E-mail -->
         <div>
-            <label class="block text-sm text-zinc-400 mb-1.5" for="<?= $formId ?>-email">E-mail</label>
-            <input type="email" id="<?= $formId ?>-email" name="email"
+            <label class="block text-sm text-zinc-400 mb-1.5" for="<?= $formIdEsc ?>-email">E-mail</label>
+            <input type="email" id="<?= $formIdEsc ?>-email" name="email"
                    class="contact-field w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500 transition-colors text-sm"
                    placeholder="seu@email.com">
         </div>
 
         <!-- Telefone -->
         <div>
-            <label class="block text-sm text-zinc-400 mb-1.5" for="<?= $formId ?>-phone">Telefone</label>
-            <input type="tel" id="<?= $formId ?>-phone" name="phone"
+            <label class="block text-sm text-zinc-400 mb-1.5" for="<?= $formIdEsc ?>-phone">Telefone</label>
+            <input type="tel" id="<?= $formIdEsc ?>-phone" name="phone"
                    class="contact-field w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500 transition-colors text-sm"
                    placeholder="+55 11 99999-9999">
         </div>
