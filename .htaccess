@@ -9,5 +9,9 @@ RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^([^/]+)$ $1.php [L,QSA]
 
 # Redirect existing .php URLs to clean URLs
+# (backend endpoints excluded — 301 converts POST to GET, breaking them)
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]
+RewriteCond %{THE_REQUEST} !/save-contato\.php [NC]
+RewriteCond %{THE_REQUEST} !/admin-action\.php [NC]
+RewriteCond %{THE_REQUEST} !/painel-contatos\.php [NC]
 RewriteRule ^ /%1 [R=301,L]

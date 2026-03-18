@@ -30,14 +30,14 @@
                     <ul class="space-y-4 text-zinc-500 text-sm">
                         <li><a href="sobre-nos.php" class="hover:text-blue-500 transition-colors">Sobre Nós</a></li>
                         <li><a href="confianca-seguranca.php" class="hover:text-blue-500 transition-colors">Confiança e Segurança</a></li>
-                        <li><a href="contato.php" class="hover:text-blue-500 transition-colors">Entre em contato</a></li>
+                        <li><button type="button" data-open-modal="contact" class="hover:text-blue-500 transition-colors text-left">Entre em contato</button></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="font-bold text-white mb-6 uppercase text-sm tracking-wider">Suporte</h4>
                     <ul class="space-y-4 text-zinc-500 text-sm">
-                        <li><a href="https://wa.me/5511999999999" class="hover:text-blue-500 transition-colors">Falar com nossos especialistas</a></li>
+                        <li><button type="button" data-open-modal="contact" class="hover:text-blue-500 transition-colors text-left">Falar com nossos especialistas</button></li>
                         <li><a href="ajuda-faq.php" class="hover:text-blue-500 transition-colors">Ajuda / FAQ</a></li>
                         <li><a href="index.php#methods" class="hover:text-blue-500 transition-colors">Métodos de Verificação</a></li>
                     </ul>
